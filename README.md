@@ -1,0 +1,2 @@
+# Res_Eye_Class_ODIR
+基于ResNet的眼科疾病眼底彩照的自动化分类系统与实现
