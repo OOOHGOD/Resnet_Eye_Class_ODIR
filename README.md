@@ -1,11 +1,28 @@
-**English** | [简体中文](README.zh-CN.md)
+<div align="center">
 
-# Paired Fundus Disease Recognition
+# Paired Fundus Recognition
+
+Paired-eye feature fusion with ResNet18d and Focal Loss.
+
+**English** · [简体中文](README.zh-CN.md)
+
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square) ![ResNet18d](https://img.shields.io/badge/ResNet18d-334155?style=flat-square) ![ODIR](https://img.shields.io/badge/ODIR-334155?style=flat-square) [![MIT License](https://img.shields.io/badge/License-MIT-2563EB?style=flat-square)](LICENSE)
+
+</div>
+
+<p align="center">
+<a href="#overview">Overview</a> · <a href="#repository-contents">Repository contents</a> · <a href="#author--license">Author &amp; License</a>
+</p>
+
+---
+
+> **Project focus** · Research Notebooks
+
+
+## Overview
 
 Notebook experiments for multilabel recognition from paired left/right fundus photographs, using ODIR data, a shared ResNet18d backbone, paired-eye feature fusion, focal loss, and model evaluation.
 
-**Category:** Artificial Intelligence · Computer Vision  
-**Stack:** Python · PyTorch · PyTorch Lightning · timm · OpenCV · Jupyter
 
 ## Repository contents
 
@@ -39,8 +56,8 @@ Open `DSrenew.ipynb`, inspect the cells, configure local files, and run the expe
 
 This repository documents experiments rather than a clinically validated diagnostic product. Figures in the original Chinese materials are not independently reproduced here. No clinical effectiveness or complete deployed web application is claimed. Reproduction requires data access, compatible dependencies, compute resources, and a fresh evaluation.
 
-## Author and license
+## Author & License
 
-Author / maintainer: [https://github.com/OOOHGOD](https://github.com/OOOHGOD).
+Author / maintainer: [OOOHGOD](https://github.com/OOOHGOD) · Original contributions: [MIT License](LICENSE)
 
-Eligible original contributions are under the [MIT License](LICENSE), permitting commercial use and modification with preservation of copyright and license notices in copies or substantial portions. [License scope](LICENSE_SCOPE.md) explains third-party exclusions and upstream terms.
+Commercial use and modification are permitted with preservation of copyright and license notices in copies or substantial portions. Third-party code, datasets, models, and media retain their own terms; see [license scope](LICENSE_SCOPE.md).

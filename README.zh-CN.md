@@ -1,6 +1,92 @@
-[English](README.md) | **简体中文**
+<div align="center">
 
-# Res_Eye_Class_ODIR
+# 眼底影像多标签识别
+
+基于双眼特征融合、ResNet18d 与 Focal Loss 的实验。
+
+[English](README.md) · **简体中文**
+
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square) ![ResNet18d](https://img.shields.io/badge/ResNet18d-334155?style=flat-square) ![ODIR](https://img.shields.io/badge/ODIR-334155?style=flat-square) [![MIT License](https://img.shields.io/badge/License-MIT-2563EB?style=flat-square)](LICENSE)
+
+</div>
+
+<p align="center">
+<a href="#项目概览">项目概览</a> · <a href="#环境与使用">环境与使用</a> · <a href="#使用边界">使用边界</a> · <a href="#作者与许可">作者与许可</a>
+</p>
+
+---
+
+> **项目定位** · Notebook 实验
+
+
+<details>
+<summary>展开完整目录</summary>
+
+- [项目概览](#项目概览)
+- [实验材料](#实验材料)
+- [数据准备](#数据准备)
+- [环境与使用](#环境与使用)
+- [方法与评估](#方法与评估)
+- [使用边界](#使用边界)
+- [历史资料](#历史资料)
+- [作者与许可](#作者与许可)
+
+</details>
+
+## 项目概览
+
+使用 ODIR 双眼眼底彩照开展 Multilabel Classification 实验，探索共享 ResNet18d Backbone、左右眼 Feature Fusion、Focal Loss 与模型评估。
+
+> **仓库范围**：当前可运行材料主要是 Notebook。原设计文档中的患者管理、可视化和 AI 助手属于更完整的 Web 系统设计，其前端、后端与数据库应用未随此仓库提供。
+
+## 实验材料
+
+| 文件 | 用途 |
+| --- | --- |
+| [DSrenew.ipynb](DSrenew.ipynb) | 双眼图像加载、数据增强、ResNet18d、Focal Loss、训练与评估 |
+| [multi label.ipynb](multi%20label.ipynb) | 其他实验版本 |
+| [main.ipynb](main.ipynb) | 补充 Notebook 实验 |
+| `*-checkpoint.ipynb` | Notebook 保存副本 |
+| `*.docx`、`*.pptx` | 中文设计说明与竞赛演示材料 |
+
+## 数据准备
+
+Notebook 引用了 ODIR 图像、标注 Excel 与 CSV，例如 `ODIR-5K_Training_Annotations(Updated)_V2.xlsx` 和 `XYZ_ODIR.csv`。运行前请按本地数据调整路径与字段。
+
+原项目[数据分享链接](https://pan.baidu.com/s/1ocOTqy6AFXXo6iVviKA-Bg?pwd=2023)的提取码为 `2023`。数据链接、图像授权与代码许可证分别适用，使用前需核对。
+
+请检查 Label 顺序、左右眼匹配、患者级数据划分与预处理，避免同一患者的相关图像跨越不同评估划分。
+
+## 环境与使用
+
+仓库未提供固定版本的依赖清单。先安装适合本机环境的 PyTorch / torchvision，再准备其他 Notebook 依赖：
+
+```bash
+python -m pip install jupyter pandas openpyxl numpy scikit-learn matplotlib pillow opencv-python pytorch-lightning timm torchmetrics albumentations
+jupyter notebook
+```
+
+打开 `DSrenew.ipynb`，检查并配置路径后，按实验区块顺序运行。代码包含旧版本库 API 和显式 CUDA 调用，可能需要调整依赖或设备配置；以上命令是依赖起点，不是已验证的 Lockfile。
+
+## 方法与评估
+
+1. 读取同一患者的左右眼图像并进行预处理。
+2. 以预训练 ResNet18d 提取特征，融合双眼信息。
+3. 使用 Focal Loss 优化多标签预测。
+4. 检查实验对应的评估、阈值和推理代码，再复用 checkpoint。
+
+## 使用边界
+
+本项目是研究与课程实验，不是经过临床验证的诊断产品。原竞赛资料中的表现指标、部署效果和完整 Web 功能并未由当前 README 独立复现；复现仍需数据、兼容环境、计算资源和重新评估。
+
+
+## 历史资料
+
+> 以下折叠内容保留原有课程 / 竞赛材料。旧路径、示例和展示指标以历史版本为背景；运行时请优先采用上方说明。
+
+<details>
+<summary>展开原有设计与实验说明</summary>
+
 基于ResNet的眼科疾病眼底彩照的自动化分类系统与实现
 多特征融合的眼底视网膜疾病识别系统 设计说明文档
 
@@ -74,9 +160,10 @@ AI 眼科助手回答界面
 不足之处：当前系统主要依赖二维眼底图像，对复杂病变的空间结构信息挖掘不足；在极个别罕见眼病的识别上仍存在漏诊可能，训练数据中罕见病例占比偏低；模型在低配置硬件环境下推理速度可能略有下降，对部分基层医疗机构的老旧设备兼容性有待提升；用户交互界面的个性化定制功能较少，暂未完全满足不同医护人员的操作习惯。
 将来可改进之处：进一步探索融合三维 OCT 影像技术，获取更丰富眼底信息；研究病变区域的像素级分割技术，更精确地定位和分析病变；持续优化模型，降低计算资源消耗，使系统更好地适应不同硬件环境，拓展在更多医疗场景中的应用。
 
+</details>
 
-## 作者与许可证
+## 作者与许可
 
-作者/维护者：[https://github.com/OOOHGOD](https://github.com/OOOHGOD)。
+作者 / 维护者：[OOOHGOD](https://github.com/OOOHGOD) · 原创贡献：[MIT License](LICENSE)
 
-原创贡献采用 [MIT 许可证](LICENSE)，允许商用和修改；分发软件副本或实质部分时须保留版权与许可声明。第三方代码、数据、模型和媒体素材保留各自权利，详见 [LICENSE_SCOPE.md](LICENSE_SCOPE.md)。
+允许商用和修改；分发软件副本或实质部分时，须保留版权与许可声明。第三方代码、数据、模型和媒体素材保留各自权利，详见 [许可适用范围](LICENSE_SCOPE.md)。
